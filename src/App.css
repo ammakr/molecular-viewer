@@ -1,0 +1,373 @@
+/* ─── Layout ─────────────────────────────────────────────── */
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100svh;
+  background: #0d0e16;
+  color: #c9c5d3;
+  font-family: var(--sans);
+  overflow: hidden;
+}
+
+/* ─── Header ─────────────────────────────────────────────── */
+.header {
+  padding: 14px 24px 12px;
+  border-bottom: 1px solid #1e1f2d;
+  flex-shrink: 0;
+}
+
+.header-title {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.header-subtitle {
+  font-size: 12px;
+  color: #88879c;
+  margin: 0;
+  a {
+    color: lightblue;
+    text-decoration: none;
+  }
+}
+
+.header h1 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #f0edf8;
+  margin: 0;
+  letter-spacing: -0.3px;
+}
+
+@media (max-width: 640px) {
+  .header h1 {
+    font-size: 16px;
+  }
+  .badge {
+    font-size: 10px;
+  }
+}
+
+.badge {
+  font-size: 11px;
+  font-weight: 600;
+  background: rgba(170, 59, 255, 0.2);
+  color: #c084fc;
+  border: 1px solid rgba(170, 59, 255, 0.3);
+  border-radius: 4px;
+  padding: 2px 7px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.subtitle {
+  margin: 3px 0 0;
+  font-size: 13px;
+  color: #6b6a7a;
+}
+
+/* ─── Two-column layout ──────────────────────────────────── */
+.layout {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+}
+
+/* ─── Sidebar ────────────────────────────────────────────── */
+.sidebar {
+  width: 240px;
+  flex-shrink: 0;
+  border-right: 1px solid #1e1f2d;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  scrollbar-width: thin;
+  scrollbar-color: #2a2b3a transparent;
+}
+
+.panel {
+  padding: 16px;
+  border-bottom: 1px solid #1e1f2d;
+}
+
+.panel h2 {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: #5a5870;
+  margin: 0 0 12px;
+}
+
+/* ─── Load form ──────────────────────────────────────────── */
+.load-form {
+  display: flex;
+  gap: 8px;
+}
+
+.pdb-input {
+  flex: 1;
+  background: #16172a;
+  border: 1px solid #2a2b3a;
+  border-radius: 6px;
+  color: #f0edf8;
+  font-size: 14px;
+  font-family: var(--mono);
+  padding: 7px 10px;
+  outline: none;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: border-color 0.2s;
+  min-width: 0;
+
+  &::placeholder {
+    color: #3a3a4e;
+    text-transform: none;
+    letter-spacing: 0;
+  }
+
+  &:focus {
+    border-color: #7c3aed;
+  }
+}
+
+.btn-primary {
+  background: #7c3aed;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 7px 12px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition:
+    background 0.2s,
+    opacity 0.2s;
+
+  &:hover:not(:disabled) {
+    background: #6d28d9;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.error {
+  margin: 10px 0 0;
+  font-size: 12px;
+  color: #f87171;
+  line-height: 1.4;
+}
+
+.loaded-tag {
+  margin: 10px 0 0;
+  font-size: 12px;
+  color: #6b6a7a;
+
+  strong {
+    color: #a78bfa;
+    font-family: var(--mono);
+  }
+}
+
+/* ─── Representation buttons ─────────────────────────────── */
+.rep-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+}
+
+.rep-btn {
+  background: #16172a;
+  border: 1px solid #2a2b3a;
+  border-radius: 6px;
+  color: #9d9aad;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 7px 8px;
+  cursor: pointer;
+  text-align: center;
+  transition:
+    background 0.15s,
+    border-color 0.15s,
+    color 0.15s;
+
+  &:hover:not(:disabled) {
+    background: #1e1f35;
+    border-color: #7c3aed;
+    color: #d4b8ff;
+  }
+
+  &.active {
+    background: rgba(124, 58, 237, 0.2);
+    border-color: #7c3aed;
+    color: #c084fc;
+  }
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+}
+
+/* ─── Presets ────────────────────────────────────────────── */
+.presets {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.preset-btn {
+  width: 100%;
+  background: none;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  padding: 8px 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-align: left;
+  transition:
+    background 0.15s,
+    border-color 0.15s;
+
+  &:hover {
+    background: #16172a;
+    border-color: #2a2b3a;
+  }
+
+  &.active {
+    background: rgba(124, 58, 237, 0.15);
+    border-color: rgba(124, 58, 237, 0.4);
+  }
+}
+
+.preset-id {
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 600;
+  color: #a78bfa;
+  min-width: 36px;
+}
+
+.preset-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.preset-name {
+  font-size: 12px;
+  color: #d4d0e0;
+  font-weight: 500;
+}
+
+.preset-desc {
+  font-size: 11px;
+  color: #55546a;
+  line-height: 1.3;
+}
+
+/* ─── Hints ──────────────────────────────────────────────── */
+.hints ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.hints li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: #55546a;
+}
+
+kbd {
+  font-family: var(--mono);
+  font-size: 10px;
+  background: #1e1f2e;
+  border: 1px solid #2a2b3a;
+  border-radius: 4px;
+  padding: 2px 6px;
+  color: #9d9aad;
+}
+
+/* ─── Viewer ─────────────────────────────────────────────── */
+.viewer-wrap {
+  flex: 1;
+  position: relative;
+  min-width: 0;
+}
+
+.viewport {
+  width: 100%;
+  height: 100%;
+}
+
+/* ─── Loading overlay ────────────────────────────────────── */
+.loading-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: rgba(13, 14, 22, 0.75);
+  backdrop-filter: blur(4px);
+  font-size: 13px;
+  color: #9d9aad;
+  pointer-events: none;
+}
+
+.spinner {
+  width: 28px;
+  height: 28px;
+  border: 2px solid #2a2b3a;
+  border-top-color: #7c3aed;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ─── Responsive ─────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .layout {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid #1e1f2d;
+    flex-direction: row;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    max-height: 220px;
+  }
+
+  .panel {
+    min-width: 200px;
+    border-bottom: none;
+    border-right: 1px solid #1e1f2d;
+  }
+}
